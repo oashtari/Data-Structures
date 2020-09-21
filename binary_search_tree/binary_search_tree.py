@@ -9,6 +9,20 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys
+# path = sys.path.append('..')
+
+sys.path.append('../queue')
+
+# sys.path.insert(1, '../queue/')
+
+from queue import Queue
+
+
+sys.path.insert(1, '../stack/')
+
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -60,6 +74,13 @@ class BSTNode:
             self = self.right
         return self.value
 
+    def get_min(self):
+        if not self.left:
+            return self.value
+        while self.left:
+            self = self.left
+        return self.value
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -74,17 +95,47 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    
+    def in_order_print(self, node):
+        
+        if node.left is not None:
+            self.in_order_print(node.left)
+
+        print(node.value)
+
+        # print('RIGHT', self.right)
+        if node.right is not None:
+            self.in_order_print(node.right)
+
+    # def in_order_print(self):
+    #     # In-Order -> LEFT NODE | NODE | RIGHT NODE
+    #     if self.left != None:  # L
+    #         self.in_order_print(self.left)
+
+    #     print(self.value)  # N
+
+    #     if self.right != None:  # R
+    #         self.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # Queue
     def bft_print(self):
-        pass
+        # queue = Queue()
+        # queue.enqueue(node)
+
+        # while len(queue) > 0:
+
+        # print('Q', queue)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # Stack
+        pass
     def dft_print(self):
+        # stack = []
+
+
         pass
 
     # Stretch Goals -------------------------
@@ -101,23 +152,23 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+# bst = BSTNode(1)
 
-bst.insert(8)
-bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
+# bst.insert(8)
+# bst.insert(5)
+# bst.insert(7)
+# bst.insert(6)
+# bst.insert(3)
+# bst.insert(4)
+# bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+# bst.bft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-# bst.pre_order_dft()
-print("in order")
-# bst.in_order_dft()
-print("post order")
-# bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# # bst.pre_order_dft()
+# print("in order")
+# # bst.in_order_dft()
+# print("post order")
+# # bst.post_order_dft()  
