@@ -17,11 +17,27 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+
+            if self.left is None:
+                self.left = BSTNode(value)
+
+            else:
+                self.left.insert(value)
+
+        if value > self.value:
+
+            if self.right is None:
+                self.right = BSTNode(value)
+
+            else: 
+                self.right.insert(value)
+    
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        
         pass
 
     # Return the maximum value found in the tree
@@ -78,8 +94,8 @@ bst.dft_print()
 
 print("elegant methods")
 print("pre order")
-bst.pre_order_dft()
+# bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+# bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+# bst.post_order_dft()  
